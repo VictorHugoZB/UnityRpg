@@ -29,10 +29,17 @@ public class Inventario : MonoBehaviour
         }
     }
 
+    /*
+     * A função AddItem tem como principal objetivo adicionar o item no inventário. Checando se tem inventario
+     * disponivel, verificando se o item é empilhavel para armazena-lo no mesmo inventário que outro item do
+     * mesmo tipo
+     * (bug [CORRIGIDO]: caso fosse coletado um único item, mesmo que empilhavel, o marcador de quantidade iria marcar "00".)
+     * (bug [CORRIGIDO]: a quantidade especificado no ScriptableObject não era respeitada.)
+     */ 
     public bool AddItem(Item itemToAdd){
         for (int i=0; i<items.Length; i++){
             if (items[i] != null && items[i].tipoItem == itemToAdd.tipoItem && itemToAdd.empilhavel == true){
-                items[i].quantidade = items[i].quantidade + 1;
+                items[i].quantidade = items[i].quantidade + itemToAdd.quantidade;
                 Slot slotScript = slots[i].gameObject.GetComponent<Slot>();
                 Text quantidadeTexto = slotScript.qtdTexto;
                 quantidadeTexto.enabled = true;
@@ -41,9 +48,16 @@ public class Inventario : MonoBehaviour
             }
             if (items[i] == null){
                 items[i] = Instantiate(itemToAdd);
-                items[i].quantidade = 1;
+                items[i].quantidade = itemToAdd.quantidade;
                 itemImagens[i].sprite = itemToAdd.sprite;
                 itemImagens[i].enabled = true;
+                if (itemToAdd.empilhavel)       // Neste if verifico se o item é empilhavel para modificar o texto abaixo do item, caso o item seja empilhavel.                      
+                {
+                    Slot slotScript = slots[i].gameObject.GetComponent<Slot>();
+                    Text quantidadeTexto = slotScript.qtdTexto;
+                    quantidadeTexto.enabled = true;
+                    quantidadeTexto.text = items[i].quantidade.ToString();
+                }
                 return true;
             }
         }
