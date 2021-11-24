@@ -88,4 +88,16 @@ public class Inventario : MonoBehaviour
         }
         return false;
     }
+
+    public void consomeChave()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] && items[i].tipoItem == Item.TipoItem.CHAVE)
+            {
+                items[i] = null;
+            }
+        }
+        
+    }
 }

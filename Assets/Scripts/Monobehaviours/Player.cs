@@ -77,7 +77,9 @@ public class Player : Caractere
                         AjustePontosDano(DanoObjeto.quantidade);
                         break;
                     case Item.TipoItem.BAU:
-                        if(inventario.podeColetarBau()) {
+                        if(inventario.podeColetarBau())
+                        {
+                            inventario.consomeChave();
                             DeveDesaparecer = inventario.AddItem(DanoObjeto);
                         }
                         else
