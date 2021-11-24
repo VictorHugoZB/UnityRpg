@@ -45,6 +45,7 @@ public class Inimigo : Caractere
     {
         while (true)
         {
+            StartCoroutine(FlickerCaractere());
             pontosVida -= dano;
             print(dano);
             if (pontosVida <= float.Epsilon)

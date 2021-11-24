@@ -11,7 +11,8 @@ public class Arco : MonoBehaviour
         while(percentualCompleto < 1.0f)
         {
             percentualCompleto += Time.deltaTime / duracao;
-            transform.position = Vector3.Lerp(posicaoInicial, destino, percentualCompleto);
+            var alturaCorrente = Mathf.Sin(Mathf.PI * percentualCompleto);
+            transform.position = Vector3.Lerp(posicaoInicial, destino, percentualCompleto) + Vector3.up*alturaCorrente;
             yield return null;
         }
         gameObject.SetActive(false);
