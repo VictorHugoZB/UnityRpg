@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 796a0937c9a00d941aaadfb95b0719f6, type: 3}
-  m_Name: ChaveO
+  m_Name: Chave
   m_EditorClassIdentifier: 
   NomeObjeto: Chave
   sprite: {fileID: -8335010095259047218, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}

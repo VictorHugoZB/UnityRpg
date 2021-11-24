@@ -17,6 +17,11 @@ public class Inventario : MonoBehaviour
         CriaSlots();
     }
 
+    
+    /*
+     * Esta é a função responsavel pela criação dos slots de inventário no inicio do jogo.
+     * A quantidade de slots criadas é definida pela variável numSlosts
+     */
     public void CriaSlots(){
         if (slotPrefab != null){
             for (int i=0; i <numSlots; i++){
@@ -66,6 +71,12 @@ public class Inventario : MonoBehaviour
         return false;
     }
     
+    
+    /*
+     * Esta função percorre todos os slots para ver se há uma chave no inventário e
+     * retorna um Bool falando se o player pode ou não coletar um baú.
+     * O baú so pode ser coletado caso tenha uma chave em seu inventário.
+     */
     public bool podeColetarBau()
     {
         for (int i = 0; i < items.Length; i++)
