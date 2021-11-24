@@ -11,7 +11,12 @@ public class Item : ScriptableObject
 
     public enum TipoItem{
         MOEDA,
-        HEALTH
+        HEALTH,
+        BAU,
+        CHAVE,
+        DIAMANTE
+        
+        
     }
 
     public TipoItem tipoItem;

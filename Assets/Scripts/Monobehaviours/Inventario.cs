@@ -25,6 +25,7 @@ public class Inventario : MonoBehaviour
                 novoSlot.transform.SetParent(gameObject.transform.GetChild(0).transform);
                 slots[i] = novoSlot;
                 itemImagens[i] = novoSlot.transform.GetChild(1).GetComponent<Image>();
+                
             }
         }
     }
@@ -51,6 +52,7 @@ public class Inventario : MonoBehaviour
                 items[i].quantidade = itemToAdd.quantidade;
                 itemImagens[i].sprite = itemToAdd.sprite;
                 itemImagens[i].enabled = true;
+                itemImagens[i].preserveAspect = true;
                 if (itemToAdd.empilhavel)       // Neste if verifico se o item é empilhavel para modificar o texto abaixo do item, caso o item seja empilhavel.                      
                 {
                     Slot slotScript = slots[i].gameObject.GetComponent<Slot>();
@@ -58,6 +60,18 @@ public class Inventario : MonoBehaviour
                     quantidadeTexto.enabled = true;
                     quantidadeTexto.text = items[i].quantidade.ToString();
                 }
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public bool podeColetarBau()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] && items[i].tipoItem == Item.TipoItem.CHAVE)
+            {
                 return true;
             }
         }

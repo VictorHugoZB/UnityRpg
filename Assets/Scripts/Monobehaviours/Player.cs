@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -68,6 +69,18 @@ public class Player : Caractere
                         DeveDesaparecer = AjustePontosDano(DanoObjeto.quantidade);
                         AjustePontosDano(DanoObjeto.quantidade);
                         break;
+                    case Item.TipoItem.BAU:
+                        if(inventario.podeColetarBau()) {
+                            DeveDesaparecer = inventario.AddItem(DanoObjeto);
+                        }
+                        else
+                        {
+                            DeveDesaparecer = false;
+                        }
+                        break;
+                    case Item.TipoItem.CHAVE:
+                        DeveDesaparecer = inventario.AddItem(DanoObjeto);
+                        break;
                     default:
                         break;
                 }
@@ -85,4 +98,6 @@ public class Player : Caractere
         }
         return false;
     }
+
+    
 }
