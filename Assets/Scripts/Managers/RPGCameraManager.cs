@@ -18,7 +18,8 @@ public class RPGCameraManager : MonoBehaviour
         {
             instanciaCompartilhada = this;
         }
-        GameObject vCamGameObject = GameObject.FindWithTag("Virtual Camera");
+        GameObject vCamGameObject = GameObject.Find("CM vcam1");
+        print(vCamGameObject);
         virtualCamera = vCamGameObject.GetComponent<CinemachineVirtualCamera>();
     }
 

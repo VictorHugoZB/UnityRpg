@@ -37,6 +37,7 @@ public class RPGGameManager : MonoBehaviour
         if(playerPontoSpawn != null)
         {
             GameObject player = playerPontoSpawn.SpawnO();
+            
             cameraManager.virtualCamera.Follow = player.transform;
         }
     }

@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 947768857642355604}
   - component: {fileID: 947768857642355607}
   - component: {fileID: 74997531717771057}
-  m_Layer: 6
+  - component: {fileID: -8524092590042952894}
+  - component: {fileID: 7995607242479013029}
+  - component: {fileID: 4324640288852848303}
+  m_Layer: 8
   m_Name: InimigoO
   m_TagString: Inimigo
   m_Icon: {fileID: 0}
@@ -131,7 +134,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &74997531717771057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +147,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c50344a48826246b6bbcb911b15954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pontosDano: {fileID: 0}
   inicioPontosDano: 2
   MaxPontosDano: 2
   forcaDano: 1
+--- !u!58 &-8524092590042952894
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947768857642355600}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!114 &7995607242479013029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947768857642355600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8ebfccc48542549b53066269cfec00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadePerseguicao: 1.4
+  velocidadePerambular: 0.8
+  intervaloMudancaDirecao: 3
+  perseguePlayer: 1
+--- !u!95 &4324640288852848303
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947768857642355600}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f953d3d09180a24cb769c07e15e9107, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

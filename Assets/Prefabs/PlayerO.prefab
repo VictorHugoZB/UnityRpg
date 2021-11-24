@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5798513493956435452}
   - component: {fileID: -4987101744568384516}
   - component: {fileID: 8803011021595816779}
+  - component: {fileID: 4362004348418927515}
   m_Layer: 6
   m_Name: PlayerO
   m_TagString: Player
@@ -178,8 +179,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3277080e5fcc0694b8c41a7958f6fb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pontosDano: {fileID: 11400000, guid: 7192fbc8c8166444ea34ac786494f9ed, type: 2}
   inicioPontosDano: 6
   MaxPontosDano: 10
   inventarioPrefab: {fileID: -7576561704016363651, guid: e682ac660bc30fa43a2b42e48898d145, type: 3}
   healthBarPrefab: {fileID: 6021871415209404548, guid: 1a34bc1745abbad41a8151ea3a4d137d, type: 3}
+  pontosDano: {fileID: 11400000, guid: 7192fbc8c8166444ea34ac786494f9ed, type: 2}
+--- !u!114 &4362004348418927515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798513493956435441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0f4a1d3c3b8284f9a5d3b815ab61c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  municaoPrefab: {fileID: 5081506765087994035, guid: d39f330fe02071440a61db94f1dcb8e4, type: 3}
+  tamanhoPiscina: 7
+  velocidadeArma: 2
