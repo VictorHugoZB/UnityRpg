@@ -9,11 +9,50 @@ public class Player : Caractere
     public HealthBar healthBarPrefab;   // referência ao objeto prefab criado da Health Bar
     HealthBar healthBar;
 
+    public PontosDano pontosDano; // Tem valor do objeto de script
+
     private void Start(){
         inventario = Instantiate(inventarioPrefab);
         pontosDano.valor = inicioPontosDano;
         healthBar = Instantiate(healthBarPrefab);
         healthBar.caractere = this;
+    }
+
+    public override IEnumerator DanoCaractere(int dano, float intervalo)
+    {
+        while (true)
+        {
+            pontosDano.valor = pontosDano.valor - dano;
+            print("dada");
+            if(pontosDano.valor <= float.Epsilon)
+            {
+                KillCaractere();
+                break;
+            }
+            if(intervalo > float.Epsilon)
+            {
+                yield return new WaitForSeconds(intervalo);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    public override void KillCaractere()
+    {
+        base.KillCaractere();
+        Destroy(healthBar.gameObject);
+        Destroy(inventario.gameObject);
+    }
+
+    public override void ResetCaractere()
+    {
+        inventario = Instantiate(inventarioPrefab);
+        healthBar = Instantiate(healthBarPrefab);
+        healthBar.caractere = this;
+        pontosDano.valor = inicioPontosDano;
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
