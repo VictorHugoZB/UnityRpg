@@ -91,11 +91,12 @@ public class Inventario : MonoBehaviour
 
     public void consomeChave()
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < numSlots; i++)
         {
             if (items[i] && items[i].tipoItem == Item.TipoItem.CHAVE)
             {
                 items[i] = null;
+                return;
             }
         }
         
