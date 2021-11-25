@@ -4731,7 +4731,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "PARABENS, VOC\xCA COMPLETOU TODOS OS NIVEIS!"
+  m_Text: PARABENS, VOCE COMPLETOU TODOS OS NIVEIS!
 --- !u!222 &494157254
 CanvasRenderer:
   m_ObjectHideFlags: 0

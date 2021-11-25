@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Classe utilizada para controlar o botão para carregar a tela de créditos
+/// Classe utilizada para controlar o botão ir para a próxima tela de créditos
 /// </summary>
-public class CreditButton : MonoBehaviour
+public class CreditsNextButton : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -20,9 +20,9 @@ public class CreditButton : MonoBehaviour
         
     }
 
-    /* método para prosseguir carregar os créditos quando apertado o botão */
-    public void LoadCredits()
+    /* método para ir para a próxima tela de créditos quando apertado o botão*/
+    public void NextCreditsScreen()
     {
-        SceneManager.LoadScene("Credits1");
+        SceneManager.LoadScene("Credits_2");
     }
 }
