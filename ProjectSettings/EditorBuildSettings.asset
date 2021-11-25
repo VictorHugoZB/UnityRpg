@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/LevelComplete.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: d7ad69994aaeaf24c81afed64ff4e33b
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 3df08b8dfb09a9442a564c2ec8f3078e
+  - enabled: 1
+    path: Assets/Scenes/Lab5_RPG1_setup.unity
+    guid: 1d194f7a9bb69f54bb4dde5cb091889e
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 9c8352e650280c14c8ef04d15d259730
+  - enabled: 1
+    path: Assets/Scenes/Vitoria.unity
+    guid: 9d2eba82e6ed1414ab0f5567ada78483
   m_configObjects: {}

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Caractere
 {
@@ -29,6 +30,7 @@ public class Player : Caractere
             if(pontosDano.valor <= float.Epsilon)
             {
                 KillCaractere();
+                SceneManager.LoadScene("GameOver"); // Player morreu, carrega cena de GameOver
                 break;
             }
             if(intervalo > float.Epsilon)
@@ -118,4 +120,5 @@ public class Player : Caractere
         }
         return false;
     }
+
 }
