@@ -7,13 +7,19 @@ public class Municao : MonoBehaviour
     public int danoCausado;
 
 
+    public Coroutine ArcoTrajetoria;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision is BoxCollider2D && collision.gameObject.tag != "Player")
+        if(gameObject.activeSelf && collision is BoxCollider2D && collision.gameObject.tag != "Player")
         {
             Inimigo inimigo = collision.gameObject.GetComponent<Inimigo>();
             StartCoroutine(inimigo.DanoCaractere(danoCausado, 0.0f));
-            gameObject.SetActive(false);
+            if (ArcoTrajetoria != null) StopCoroutine(ArcoTrajetoria);
+            //gameObject.SetActive(false);
+
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
     }
 

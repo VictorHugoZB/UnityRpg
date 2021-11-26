@@ -16,14 +16,14 @@ public class Inimigo : Caractere
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Colide");
+        
         if (collision.gameObject.CompareTag("Player"))
         {
-            print("Player acho");
+            
             Player player = collision.gameObject.GetComponent<Player>();
             if (danoCoroutine == null)
             {
-                print("COroutine nula");
+                
                 danoCoroutine = StartCoroutine(player.DanoCaractere(forcaDano, 1.0f));
             }
         }
@@ -47,6 +47,9 @@ public class Inimigo : Caractere
         {
             StartCoroutine(FlickerCaractere());
             pontosVida -= dano;
+
+            somPlayer.PlayOneShot(somPlayer.clip);
+
             print(dano);
             if (pontosVida <= float.Epsilon)
             {
@@ -72,7 +75,7 @@ public class Inimigo : Caractere
     // Start is called before the first frame update
     void Start()
     {
-        
+        somPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

@@ -9,6 +9,9 @@ public abstract class Caractere : MonoBehaviour
     public float inicioPontosDano;  // valor minimo inicial de saúde do player
     public float MaxPontosDano; // valor maximo de saúde do player
 
+    public AudioClip hitSom;        // Som que toca ao perder vida
+    public AudioSource somPlayer;          // Referencia ao AudioSource
+
     public abstract void ResetCaractere();
 
     public virtual IEnumerator FlickerCaractere()
@@ -17,7 +20,7 @@ public abstract class Caractere : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         GetComponent<SpriteRenderer>().color = Color.white;
     }
-
+    
     public abstract IEnumerator DanoCaractere(int dano, float intervalo);
 
     public virtual void KillCaractere()

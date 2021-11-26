@@ -14,6 +14,8 @@ public class Armas : MonoBehaviour
     [HideInInspector]
     public Animator animator;
 
+    AudioSource LobSom;             //Toca o som de lançar Munição
+
     Camera cameraLocal;
 
     float slopePositivo;
@@ -39,6 +41,9 @@ public class Armas : MonoBehaviour
             municaoO.SetActive(false);
             municaoPiscina.Add(municaoO);
         }
+
+        LobSom = gameObject.AddComponent<AudioSource>();
+        LobSom.clip = Resources.Load<AudioClip>("Sons/Lob Shot");
     }
 
     // Start is called before the first frame update
@@ -61,7 +66,7 @@ public class Armas : MonoBehaviour
     {
         Vector2 posicaoPlayer = gameObject.transform.position;
         Vector2 posicaoMouse = cameraLocal.ScreenToWorldPoint(posicaoEntrada);
-        float interseccaoY = posicaoPlayer.y - (slopePositivo * posicaoMouse.x);
+        float interseccaoY = posicaoPlayer.y - (slopePositivo * posicaoPlayer.x);
         float entradaInterseccao = posicaoMouse.y - (slopePositivo * posicaoMouse.x);
         return entradaInterseccao > interseccaoY;
 
@@ -70,7 +75,7 @@ public class Armas : MonoBehaviour
     {
         Vector2 posicaoPlayer = gameObject.transform.position;
         Vector2 posicaoMouse = cameraLocal.ScreenToWorldPoint(posicaoEntrada);
-        float interseccaoY = posicaoPlayer.y - (slopeNegativo * posicaoMouse.x);
+        float interseccaoY = posicaoPlayer.y - (slopeNegativo * posicaoPlayer.x);
         float entradaInterseccao = posicaoMouse.y - (slopeNegativo * posicaoMouse.x);
         return entradaInterseccao > interseccaoY;
 
@@ -81,11 +86,22 @@ public class Armas : MonoBehaviour
         Vector2 posicaoMouse = Input.mousePosition;
         Vector2 posicaoPlayer = transform.position;
         bool acimaSlopePositivo = AcimaSlopePositivo(Input.mousePosition);
-        bool acimaSlopeNegativo= AcimaSlopeNegativo(Input.mousePosition);
-        if(!acimaSlopePositivo && acimaSlopeNegativo) { return Quadrante.Leste; }
-        if(!acimaSlopePositivo && !acimaSlopeNegativo) { return Quadrante.Sul; }
-        if(acimaSlopePositivo && !acimaSlopeNegativo) { return Quadrante.Oeste; }
-        else { return Quadrante.Norte; }
+        bool acimaSlopeNegativo = AcimaSlopeNegativo(Input.mousePosition);
+        if(!acimaSlopePositivo && acimaSlopeNegativo) 
+        {
+            return Quadrante.Leste; 
+        }
+        if(!acimaSlopePositivo && !acimaSlopeNegativo) 
+        { 
+            return Quadrante.Sul; 
+        }
+        if(acimaSlopePositivo && !acimaSlopeNegativo) 
+        { 
+            return Quadrante.Oeste; 
+        }
+         
+        return Quadrante.Norte; 
+        
 
     }
 
@@ -98,13 +114,13 @@ public class Armas : MonoBehaviour
             switch (quadranteEnum)
             {
                 case Quadrante.Leste:
-                    vetorQuadrante = new Vector2(1.0f, 1.0f);
+                    vetorQuadrante = new Vector2(1.0f, 0.0f);
                     break;
                 case Quadrante.Sul:
                     vetorQuadrante = new Vector2(0.0f, -1.0f);
                     break;
                 case Quadrante.Oeste:
-                    vetorQuadrante = new Vector2(0.0f, 1.0f);
+                    vetorQuadrante = new Vector2(-1.0f, 0.0f);
                     break;
                 case Quadrante.Norte:
                     vetorQuadrante = new Vector2(0.0f, 1.0f);
@@ -113,10 +129,11 @@ public class Armas : MonoBehaviour
                     vetorQuadrante = new Vector2(0.0f, 0.0f);
                     break;
             }
-
+            print(vetorQuadrante);
             animator.SetBool("Atirando", true);
             animator.SetFloat("AtiraX", vetorQuadrante.x);
             animator.SetFloat("AtiraY", vetorQuadrante.y);
+            atirando = false;
         }
         else
         {
@@ -132,6 +149,7 @@ public class Armas : MonoBehaviour
             atirando = true;
             DisparaMunicao();
         }
+        
         UpdateEstado();
     }
     float PegaSlope(Vector2 ponto1, Vector2 ponto2)
@@ -146,7 +164,11 @@ public class Armas : MonoBehaviour
         if(municao != null){
             Arco arcoScript = municao.GetComponent<Arco>();
             float duracaoTrajetoria = 1.0f / velocidadeArma;
-            StartCoroutine(arcoScript.arcoTrajetoria(posicaoMouse, duracaoTrajetoria));
+            var ArcoCoroutine = municao.GetComponent<Municao>().ArcoTrajetoria;
+
+            LobSom.Play();
+     
+            ArcoCoroutine = StartCoroutine(arcoScript.arcoTrajetoria(posicaoMouse, duracaoTrajetoria));
         }
     }
 
@@ -157,6 +179,8 @@ public class Armas : MonoBehaviour
             if(municao.activeSelf == false)
             {
                 municao.SetActive(true);
+                municao.GetComponent<SpriteRenderer>().enabled = true;
+                municao.GetComponent<CircleCollider2D>().enabled = true;
                 municao.transform.position = posicao;
                 return municao;
             }

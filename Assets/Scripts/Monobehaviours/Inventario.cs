@@ -12,7 +12,7 @@ public class Inventario : MonoBehaviour
     GameObject[] slots = new GameObject[numSlots];  // array de slots
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         CriaSlots();
     }

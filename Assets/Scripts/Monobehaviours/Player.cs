@@ -13,11 +13,23 @@ public class Player : Caractere
 
     public PontosDano pontosDano; // Tem valor do objeto de script
 
+    public AudioSource ColetarSom;     // Som que toca ao coletar
+
+    private void Awake()
+    {
+        ColetarSom = gameObject.AddComponent<AudioSource>();
+        ColetarSom.clip = Resources.Load<AudioClip>("Sons/Collect");
+    }
+
     private void Start(){
         inventario = Instantiate(inventarioPrefab);
         pontosDano.valor = inicioPontosDano;
         healthBar = Instantiate(healthBarPrefab);
         healthBar.caractere = this;
+
+        
+        somPlayer = gameObject.GetComponent<AudioSource>();
+        
     }
 
     public override IEnumerator DanoCaractere(int dano, float intervalo)
@@ -26,7 +38,9 @@ public class Player : Caractere
         {
             StartCoroutine(FlickerCaractere());
             pontosDano.valor = pontosDano.valor - dano;
-            print("dada");
+
+            somPlayer.PlayOneShot(somPlayer.clip); // Som de hit ao tomar dano
+
             if(pontosDano.valor <= float.Epsilon)
             {
                 KillCaractere();
@@ -103,6 +117,7 @@ public class Player : Caractere
                         break;
                 }
                 if (DeveDesaparecer) {
+                    ColetarSom.Play();
                     collision.gameObject.SetActive(false);
                 }
             }
