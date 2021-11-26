@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Classe para instanciar e atualizar a barra de vida do jogador na tela.
+/// </summary>
 public class HealthBar : MonoBehaviour
 {
     public PontosDano pontosDano; // Objeto de leitura dos dados de quantos pontos tem o Player
@@ -16,7 +19,7 @@ public class HealthBar : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // Update is called once per frame -> atualiza a barra de vida e a quantidade de Pontos de dano que o player tem.
     void Update()
     {
         if(caractere != null){

@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe utilizada para definir a trajetória que o tiro do player irá realizar.
+/// </summary>
 public class Arco : MonoBehaviour
 {
 
+    /* Define a trajetória que o tiro do player irá realizar dado o ponto de destino
+     * e o intervalo de tempo até ele.
+     */
     public IEnumerator arcoTrajetoria(Vector3 destino, float duracao)
     {
         var posicaoInicial = transform.position;

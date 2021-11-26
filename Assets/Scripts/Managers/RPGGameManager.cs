@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// classe criada para gerenciar o jogo, como por exemplo, fazer o spawn do player.
+/// </summary>
 public class RPGGameManager : MonoBehaviour
 {
     public static RPGGameManager instanciaCompartilhada = null;
@@ -11,6 +14,7 @@ public class RPGGameManager : MonoBehaviour
 
     public PontoSpawn playerPontoSpawn;
 
+    /* cria uma instância compartilhada dessa classe quando o script é carregado */
     private void Awake()
     {
         if(instanciaCompartilhada != null && instanciaCompartilhada != this)
@@ -33,6 +37,7 @@ public class RPGGameManager : MonoBehaviour
         SpawnPlayer();
     }
 
+    /* Faz o spawn do player e configura a camera para segui-lo */ 
     public void SpawnPlayer()
     {
         if(playerPontoSpawn != null)

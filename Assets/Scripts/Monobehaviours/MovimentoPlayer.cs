@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Classe para definir como o player se movimenta: Controle, tipo de animação, velocidade
+/// </summary>
 public class MovimentoPlayer : MonoBehaviour
 {
     public float VelocidadeMovimento = 3.0f;    // equivale ao momento (impulso) a ser dado para o player
@@ -30,10 +34,12 @@ public class MovimentoPlayer : MonoBehaviour
         UpdateEstado();
     }
 
+    /* corrige animação do player */
     private void FixedUpdate(){
         MoveCaractere();
     }
 
+    /* Faz o deslocamento do player pelo mapa */
     private void MoveCaractere(){
         Movimento.x = Input.GetAxisRaw("Horizontal");
         Movimento.y = Input.GetAxisRaw("Vertical");
@@ -41,6 +47,7 @@ public class MovimentoPlayer : MonoBehaviour
         rb2D.velocity = Movimento * VelocidadeMovimento;
     }
 
+    /* define parâmetros que serão utilizados na realização da animação */
     private void UpdateEstado(){
         if(Mathf.Approximately(Movimento.x, 0) && Mathf.Approximately(Movimento.y, 0))
         {

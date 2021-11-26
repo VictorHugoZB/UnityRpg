@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// Essa classe define o player. É classe filha da classe Caractere, assim como inimigo.
+/// </summary>
 public class Player : Caractere
 {
     public Inventario inventarioPrefab; // referência ao objeto prefab criado do inventário
@@ -15,12 +17,14 @@ public class Player : Caractere
 
     public AudioSource ColetarSom;     // Som que toca ao coletar
 
+    /* carrega o som de item coletado */
     private void Awake()
     {
         ColetarSom = gameObject.AddComponent<AudioSource>();
         ColetarSom.clip = Resources.Load<AudioClip>("Sons/Collect");
     }
 
+    /* faz as instancias / inicializações necessarias */
     private void Start(){
         inventario = Instantiate(inventarioPrefab);
         pontosDano.valor = inicioPontosDano;
@@ -32,6 +36,8 @@ public class Player : Caractere
         
     }
 
+    /* Esse método tem as intruções de dano do jogador: piscar em vermelho, tempo de invencibilidade,
+     * além de checar se ele morreu ou não */
     public override IEnumerator DanoCaractere(int dano, float intervalo)
     {
         while (true)
@@ -58,6 +64,7 @@ public class Player : Caractere
         }
     }
 
+    /* Método para matar (destruir a instancia) do jogador e de seus itens relacionados */
     public override void KillCaractere()
     {
         base.KillCaractere();
@@ -65,6 +72,7 @@ public class Player : Caractere
         Destroy(inventario.gameObject);
     }
 
+    /* Reinicializa o player */
     public override void ResetCaractere()
     {
         inventario = Instantiate(inventarioPrefab);

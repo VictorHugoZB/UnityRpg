@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// abstract indica que a classe não pode ser instanciada
+/// <summary>
+/// Classe que define informações essenciais de qualquer caracter no jogo,
+/// seja player ou inimigo.
+/// </summary>
 public abstract class Caractere : MonoBehaviour
 {
 
@@ -14,6 +17,7 @@ public abstract class Caractere : MonoBehaviour
 
     public abstract void ResetCaractere();
 
+    /* Faz o efeito de dano no caractere, mudando a sua cor ao perder vida */
     public virtual IEnumerator FlickerCaractere()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
@@ -21,8 +25,11 @@ public abstract class Caractere : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.white;
     }
     
+    /* Método implementado nas classes filhas, define o dano causado em um caractere
+       e verifica se ele morreu. Define o tempo até ele poder tomar dano novamente. */
     public abstract IEnumerator DanoCaractere(int dano, float intervalo);
 
+    /* Remove a instancia do caractere quando ele morre */
     public virtual void KillCaractere()
     {
         Destroy(gameObject);

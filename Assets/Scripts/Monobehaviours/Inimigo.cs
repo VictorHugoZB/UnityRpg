@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe filha de caractere, pois todo inimigo é um caractere.
+/// Implementa métodos relacionados a colisão e pontos de dano do inimigo
+/// </summary>
 public class Inimigo : Caractere
 {
     float pontosVida;           // equivalente a saude do inimigo
@@ -14,6 +18,8 @@ public class Inimigo : Caractere
         ResetCaractere();
     }
 
+    /* Checa se a colisão do inimigo foi com o player, e retira vida do player se for o caso.
+     * Inicia a rotina de dano. */
     void OnCollisionEnter2D(Collision2D collision)
     {
         
@@ -29,6 +35,7 @@ public class Inimigo : Caractere
         }
     }
 
+    /* Para a rotina de dano após o inimigo sair da colisão com o player */
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -41,6 +48,9 @@ public class Inimigo : Caractere
         }
     }
 
+    /* Realiza processos relacionados ao dano do inimigo: piscar em vermelho, perca de vida e intervalo
+     * até tomar dano novamente 
+     */
     public override IEnumerator DanoCaractere(int dano, float intervalo)
     {
         while (true)
@@ -67,6 +77,7 @@ public class Inimigo : Caractere
         }
     }
 
+    /* Reinicializa a vida di caractere */
     public override void ResetCaractere()
     {
         pontosVida = inicioPontosDano;

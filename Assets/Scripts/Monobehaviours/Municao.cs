@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe para fazer controle do tiro do player.
+/// </summary>
 public class Municao : MonoBehaviour
 {
     public int danoCausado;
@@ -9,6 +12,7 @@ public class Municao : MonoBehaviour
 
     public Coroutine ArcoTrajetoria;
 
+    /* Checa se houve colisão do tiro com um inimigo para causar dano */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(gameObject.activeSelf && collision is BoxCollider2D && collision.gameObject.tag != "Player")
