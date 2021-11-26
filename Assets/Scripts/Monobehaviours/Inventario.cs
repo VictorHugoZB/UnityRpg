@@ -2,9 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Intancia e atualiza o inventário na tela do jogador.
-/// </summary>
 public class Inventario : MonoBehaviour
 {
 
@@ -15,7 +12,7 @@ public class Inventario : MonoBehaviour
     GameObject[] slots = new GameObject[numSlots];  // array de slots
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         CriaSlots();
     }

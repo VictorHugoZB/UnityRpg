@@ -5126,7 +5126,15 @@ MonoBehaviour:
     Lobo Loco - Inner Impatience (ID 1601)
 
     Casual
-    Game Sounds (ID 36, 32)'
+    Game Sounds (ID 36, 32)
+
+
+    Musicas e sons de autoria do grupo:
+
+    Danilo
+    - Concluido, Lob Shot, hit, Collect, primeira area
+
+'
 --- !u!222 &1517555102
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5421,8 +5429,8 @@ MonoBehaviour:
 
     Free Game Items (Unity AssetStore)
 
-    RPG Fantasy
-    Items (Unity AssetStore)'
+    RPG Fantasy Items
+    (Unity AssetStore)'
 --- !u!222 &1939409727
 CanvasRenderer:
   m_ObjectHideFlags: 0
